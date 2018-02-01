@@ -1,0 +1,211 @@
+names = {"WIs" : "small widget",
+          "WIm" : "medium widget",
+          "Ts" : "small thingamajig",
+          "Tl" : "large thingamajig",
+          "WAs" : "small watchamacallit"}
+
+
+descriptions = {"WIs" : "small widget for those basic tasks",
+          "WIm" : "medium widget, helps you get things done",
+          "Ts" : "small thingamajig, almost like a small widget",
+          "Tl" : "large thingamajig for those complicated jobs",
+          "WAs" : "small watchamacallit, useful for many tasks"}
+
+
+prices = {"WIs" : 9.25,
+          "WIm" : 12.75,
+          "Ts" : 8.50,
+          "Tl" : 15.00,
+          "WAs" : 8.75}
+
+
+inventory = {"WIs" : 11,
+          "WIm" : 5,
+          "Ts" : 21,
+          "Tl" : 0,
+          "WAs" : 1}
+
+
+current_purchase = {"WIs" : 0,
+          "WIm" : 0,
+          "Ts" : 0,
+          "Tl" : 0,
+          "WAs" : 0}
+
+
+controls = {"Press A to" : "add a new item",
+           "Press R to" : "remove an item",
+           "Press E to" : "edit an item",
+            "Press I for": "info"}
+
+modify = {"Press N to" : "Edit the name of the item",
+           "Press D to" : "Edit the description of the item",
+           "Press P to" : "Edit the price of the item",
+           "Press I to" : "Edit the number of the items in inventory",
+           "Type NO if" : "You are done editing." }
+
+information = {"Press P to" : "view the prices",
+           "Press D to" : "view the descriptions",
+           "Press I to" : "view the number of item in stock inventory",
+            "Type NO if" : "you are done viewing information."}
+
+print("")
+print("Inventory List")
+print("")
+names_keys = list(names.keys())
+print(names_keys)
+print("")
+names_values = list(names.values())
+print(names_values)
+
+print("")
+print("Controls")
+print("")
+print(controls)
+print("")
+
+start = input("What would you like to do with the inventory?")
+if (start == "a") or (start == "A") or (start == "Add") or (start == "add"):
+    name2 = input("What is the name of the new item?")
+    i_d = input("What is the ID for this item?")
+    price2 = input("What is the price of the new item?")
+    inventory2 = input("How many of these items would you like to add to the inventory?")
+    description2 = input("What is the description of the item?")
+    names[i_d] = name2
+    descriptions[i_d] = description2
+    inventory[i_d] = inventory2
+    prices[i_d] = price2
+    print("The new item has been added to the inventory.")
+    print("Name, ID, price, stock and descriptions have been updated.")
+    view = input("Would you like to view the updated inventory?")
+    if (view == "y") or (view == "yes"):
+        print("")
+        print(names)
+        print("")
+        print(descriptions)
+        print("")
+        print(prices)
+        print("")
+        print(inventory)
+        print("")
+        print("Task completed.")
+        print("")
+        print("Controls")
+        print("")
+        print(controls)
+        print("")
+        start = input("What else would you like to do with the inventory?")
+    else:
+        print("Task completed.")
+        print("")
+        print("Controls")
+        print("")
+        print(controls)
+        print("")
+        start = input("What else would you like to do with the inventory?")
+        
+if (start == "e") or (start == "E") or (start == "Edit") or (start == "edit"):
+    print("")
+    print(names)
+    print("")
+    edit = input("What is the ID of the item that you would like to edit?")
+    print("")
+    print(modify)
+    print("")
+    modify = input("What would you like to edit about this item?")
+    if (modify == "N") or (modify == "n"):
+        new_name = input("What is the new name of the item?")
+        names[edit] = new_name
+        print("The item's name has been changed.")
+        view = input("Would you like to view the updated inventory?")
+        if (view == "y") or (view == "yes"):
+            print("")
+            print(names)
+            modify = input("What else would you like to edit about this item?")
+        else:
+            modify = input("What else would you like to edit about this item?")
+    if (modify == "D") or (modify == "d"):
+        new_descrip = input("What is the new description of the item?")
+        descriptions[edit]= new_descrip
+        print("The item's description has been changed.")
+        view = input("Would you like to view the updated inventory?")
+        if (view == "y") or (view == "yes"):
+            print("")
+            print(descriptions)
+            modify = input("What else would you like to edit about this item?")
+        else:
+            modify = input("What else would you like to edit about this item?")
+    if (modify == "P") or (modify == "p"):
+        new_price = input("What is the new price of the item?")
+        prices[edit]= new_price
+        print("The item's price has been changed.")
+        view = input("Would you like to view the updated inventory?")
+        if (view == "y") or (view == "yes"):
+            print("")
+            print(prices)
+            modify = input("What else would you like to edit about this item?")
+        else:
+            modify = input("What else would you like to edit about this item?")
+    if (modify == "I") or (modify == "i"):
+        new_invent = input("What is the new inventory stock of the item?")
+        inventory[edit]= new_invent
+        print("The number of the item in stock has been changed.")
+        view = input("Would you like to view the updated inventory?")
+        if (view == "y") or (view == "yes"):
+            print("")
+            print(prices)
+            modify = input("What else would you like to edit about this item?")
+        else:
+            modify = input("What else would you like to edit about this item?")
+    else:
+        print("Task completed.")
+        print("")
+        print("Controls")
+        print("")
+        print(controls)
+        print("")
+        start = input("What else would you like to do with the inventory?")
+
+if (start == "R") or (start == "r") or (start == "Remove") or (start == "remove"):
+    print("")
+    print(names)
+    print("")
+    remove = input("Enter the ID of the item you would like to remove.")
+    del names[remove]
+    del descriptions[remove]
+    del prices[remove]
+    del inventory[remove]
+    print("Task completed. Item", remove, "has been removed.")
+    view = input("Would you like to view the updated parts dictionary?")
+    if (view == "y") or (view == "yes"):
+        print("")
+        print(names)
+        print("")
+        print(prices)
+        print("")
+        print(descriptions)
+        print("")
+        print(inventory)
+    start = input("What else would you like to do with the inventory?")
+     
+if (start == "I") or (start == "i") or (start == "Info") or (start == "info"):
+    print("")
+    print(information)
+    info = input("What would you like to know about an item?")
+    if (info == "P") or (info == "p"):
+        print(prices)
+        info = input("What else would you like to know about an item?")
+    if (info == "D") or (info == "d"):
+        print(descriptions)
+        info = input("What else would you like to know about an item?")
+    if (info == "I") or (info == "i"):
+        print(inventory)
+        info = input("What else would you like to know about an item?")
+    else:
+        print("Task completed.")
+        print("")
+        print("Controls")
+        print("")
+        print(controls)
+        print("")
+        start = input("What else would you like to do with the inventory?")
